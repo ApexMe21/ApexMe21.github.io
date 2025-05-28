@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Концепция Здорового Питания: Современные Научные Данные</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdfa; /* Light teal background from a vibrant palette */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Max width for readability */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 400px; /* Max height */
+        }
+        /* Adjusted styles for the specific protein norms chart container */
+        #proteinNormsChartContainer {
+            height: 550px; /* Increased height for more labels */
+            max-height: 650px; /* Increased max height */
+            max-width: 800px; /* Increased max width to accommodate longer labels */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+            #proteinNormsChartContainer {
+                height: 600px; /* Further increase height for larger screens */
+                max-height: 700px; /* Further increase max height */
+            }
+        }
+        .section-title {
+            color: #004d40; /* Dark Teal for titles */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            margin-bottom: 1.5rem; /* mb-6 */
+            padding: 1.5rem; /* p-6 */
+        }
+        .primary-accent { color: #ff8f00; } /* Vibrant Orange */
+        .secondary-accent { color: #00796b; } /* Teal variant */
+        .text-content { color: #374151; } /* gray-700 for text */
+
+        /* Energetic & Playful Palette (Example selection: Yellow: #FFD700, Orange: #FFA500, Pink: #FFC0CB, Teal: #008080, Purple: #800080) */
+        /* Applied Palette: Background: #f0fdfa (Mint cream, derived for softness), Titles: #004D40 (Dark Teal), Accent1: #FF8F00 (Amber/Orange), Accent2: #4CAF50 (Green), Chart1: #FFC107 (Amber), Chart2: #2196F3 (Blue), Chart3: #E91E63 (Pink) */
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-teal-700 text-white py-8 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold">Концепция Здорового Питания</h1>
+            <p class="mt-2 text-lg">Современные научные данные и международные рекомендации</p>
+            <div class="mt-4">
+                <a href="https://t.me/YogaMedical" target="_blank" class="text-white hover:text-teal-200 underline text-sm">
+                    специально для Telegram-канала YogaMedical
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="intro" class="mb-12">
+            <div class="card">
+                <h2 class="text-2xl font-semibold section-title mb-4">Введение: Почему это важно?</h2>
+                <p class="text-content leading-relaxed">
+                    Здоровое питание — это не просто следование модным диетам, а осознанный выбор в пользу долголетия, энергии и благополучия. Оно играет ключевую роль в поддержании активного образа жизни, здоровья сердечно-сосудистой системы, крепости опорно-двигательного аппарата и общего качества жизни. Современные научные исследования постоянно обновляют наши знания о том, как различные нутриенты влияют на организм, помогая формировать актуальные рекомендации для каждого человека. В этой инфографике мы рассмотрим основные аспекты сбалансированного рациона, основанные на последних научных данных.
+                </p>
+            </div>
+        </section>
+
+        <section id="protein" class="mb-12">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">Белок – строительный материал жизни</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold primary-accent mb-3">Почему белок так важен?</h3>
+                    <p class="text-content mb-4">Белок – это не только основа для мышц, но и ключевой компонент ферментов, гормонов, иммунных клеток. Он обеспечивает:</p>
+                    <ul class="list-disc list-inside text-content space-y-1">
+                        <li>Рост и восстановление тканей</li>
+                        <li>Чувство сытости, помогая контролировать вес</li>
+                        <li>Поддержание обмена веществ</li>
+                        <li>Транспорт кислорода и питательных веществ</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-semibold primary-accent mb-3">Нормы потребления белка</h3>
+                    <p class="text-content mb-4">Рекомендуемая суточная норма белка зависит от возраста, пола, уровня физической активности и состояния здоровья. В среднем это:</p>
+                    <div id="proteinNormsChartContainer" class="chart-container">
+                        <canvas id="proteinNormsChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2 text-center">Представлены усредненные значения в граммах на килограмм массы тела. Индивидуальные потребности могут отличаться.</p>
+                </div>
+            </div>
+
+            <div class="card mt-6">
+                <h3 class="text-xl font-semibold primary-accent mb-3">Лучшие источники белка</h3>
+                <p class="text-content mb-4">Разнообразие источников белка помогает обеспечить организм всеми незаменимыми аминокислотами и другими полезными веществами. Содержание белка указано на 100 г готового продукта (если не указано иное).</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                    <div class="p-6 bg-green-50 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🐔</span>
+                        <p class="font-semibold text-green-700 text-center">Птица</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Куриное филе: ~25-30 г</p>
+                            <p>Индейка: ~29 г</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🐟</span>
+                        <p class="font-semibold text-blue-700 text-center">Рыба и морепродукты</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Лосось: ~20-22 г</p>
+                            <p>Треска: ~18 г</p>
+                            <p>Тунец: ~23 г</p>
+                            <p>Сайра: ~19 г</p>
+                            <p>Креветки: ~24 г</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-yellow-50 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🥚</span>
+                        <p class="mt-1 font-semibold text-yellow-700 text-center">Яйца</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Куриное яйцо: ~6-7 г (на 1 шт.)</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-purple-50 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🥛</span>
+                        <p class="mt-1 font-semibold text-purple-700 text-center">Молочные продукты</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Творог: ~16-18 г</p>
+                            <p>Йогурт греческий: ~10 г</p>
+                            <p>Молоко: ~3 г</p>
+                            <p>Ацидобифилин: ~3.1 г</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🌱</span>
+                        <p class="mt-1 font-semibold text-red-700 text-center">Бобовые</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Чечевица (вар.): ~9 г</p>
+                            <p>Нут (вар.): ~9 г</p>
+                            <p>Фасоль (вар.): ~7 г</p>
+                            <p>Горох (вар.): ~8 г</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-indigo-50 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🌰</span>
+                        <p class="mt-1 font-semibold text-indigo-700 text-center">Орехи и семена</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Миндаль: ~21 г</p>
+                            <p>Арахис: ~26 г</p>
+                            <p>Грецкий орех: ~15 г</p>
+                            <p>Семена чиа: ~17 г</p>
+                            <p>Тыквенные семечки: ~24 г</p>
+                        </div>
+                    </div>
+                     <div class="p-6 bg-pink-50 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🌿</span>
+                        <p class="mt-1 font-semibold text-pink-700 text-center">Соевые продукты</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Тофу: ~8-15 г</p>
+                            <p>Темпе: ~19 г</p>
+                            <p>Эдамаме (вар.): ~11 г</p>
+                            <p>Соевое мясо (сухое): ~50 г</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-gray-100 rounded-lg shadow flex flex-col items-center justify-center">
+                        <span class="text-3xl mb-2">🌾</span>
+                        <p class="mt-1 font-semibold text-gray-700 text-center">Цельнозерновые</p>
+                        <div class="text-xs text-gray-600 text-center mt-1">
+                            <p>Гречка (вар.): ~5 г</p>
+                            <p>Киноа (вар.): ~4 г</p>
+                            <p>Овес (вар.): ~3 г</p>
+                            <p>Бурый рис (вар.): ~3 г</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-6">
+                <h3 class="text-xl font-semibold primary-accent mb-3">Сравнение протеинов: Соевый изолят vs. Казеин</h3>
+                <p class="text-content mb-4">
+                    Соевый изолят и казеиновый протеин являются одними из лучших вариантов для увеличения общего потребления белка и достижения необходимой суточной нормы, особенно для спортсменов и людей с повышенными потребностями. Они обладают уникальными свойствами, которые делают их отличными добавками к рациону.
+                </p>
+                <p class="text-content mb-4">
+                    <strong>Соевый изолят</strong> — это полноценный растительный белок, содержащий все незаменимые аминокислоты. Он отлично подходит для веганов и людей с непереносимостью лактозы. Его <strong>средняя скорость усвоения</strong> делает его универсальным для приема в течение дня и после тренировок для <strong>восстановления мышц</strong>. Кроме того, соевый белок содержит изофлавоны, которые могут оказывать <strong>благотворное влияние на здоровье</strong>, например, поддерживать сердечно-сосудистую систему.
+                </p>
+                <p class="text-content mb-4">
+                    <strong>Казеиновый протеин</strong> — это медленно усваиваемый молочный белок. Его главное преимущество — способность образовывать "мицеллы" в желудке, что обеспечивает <strong>постепенное высвобождение аминокислот</strong> в течение нескольких часов. Это делает казеин идеальным для приема перед сном, обеспечивая мышцы питанием на протяжении всей ночи и <strong>предотвращая катаболизм (разрушение мышц)</strong>. Он также способствует <strong>длительному чувству сытости</strong>, что может быть полезно для контроля веса.
+                </p>
+                <p class="text-content mb-4">
+                    Оба вида белка являются полноценными и могут эффективно использоваться для <strong>поддержки роста и восстановления мышц</strong>, улучшения композиции тела и поддержания общего здоровья. Выбор между ними часто зависит от индивидуальных диетических предпочтений, целей и времени приема.
+                </p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Характеристика</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Изолят соевого протеина</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Казеиновый протеин</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-content">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium">Источник</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Растительный (соя)</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Животный (молоко)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium">Скорость усвоения</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Средняя/Быстрая</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Медленная</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium">Аминокислотный профиль</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Полноценный</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Полноценный</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium">Особенности</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Подходит веганам, содержит изофлавоны</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Длительное насыщение, антикатаболический эффект</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium">Лучшее время приема</td>
+                                <td class="px-6 py-4 whitespace-nowrap">В течение дня, после тренировки</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Перед сном, между приемами пищи</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-6">
+                <h3 class="text-xl font-semibold primary-accent mb-3">✨ Персональная рекомендация по белку</h3>
+                <p class="text-content mb-4">Введите свой вес и уровень активности, чтобы получить индивидуальную рекомендацию по суточной норме белка.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input type="number" id="weightInput" placeholder="Ваш вес (кг)" class="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500">
+                    <select id="activityLevel" class="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500">
+                        <option value="">Уровень активности</option>
+                        <option value="sedentary">Малоподвижный (минимум физ. активности)</option>
+                        <option value="moderate">Умеренный (1-3 раза в неделю)</option>
+                        <option value="active">Активный (3-5 раз в неделю)</option>
+                        <option value="very_active">Очень активный (ежедневные интенсивные тренировки)</option>
+                    </select>
+                </div>
+                <button id="getProteinRecBtn" class="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus->ring-teal-500 focus:ring-offset-2 transition-colors">
+                    Получить ✨рекомендацию по белку
+                </button>
+                <div id="proteinRecResult" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md text-blue-800 hidden"></div>
+                <div id="proteinRecLoading" class="mt-4 text-center text-gray-600 hidden">Загрузка...</div>
+            </div>
+        </section>
+
+        <section id="meat-dairy" class="mb-12">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">Мясо и молочные продукты – взгляд науки</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold primary-accent mb-3">Красное мясо: Почему стоит ограничить? <span class="text-red-500">⚠️</span></h3>
+                    <p class="text-content mb-4">Чрезмерное потребление красного и обработанного мяса (колбасы, сосиски) связано с повышенным риском:</p>
+                    <ul class="list-disc list-inside text-content space-y-1">
+                        <li>Сердечно-сосудистых заболеваний</li>
+                        <li>Некоторых видов рака (особенно колоректального)</li>
+                        <li>Сахарного диабета 2 типа</li>
+                    </ul>
+                    <p class="text-content mt-3">ВОЗ рекомендует ограничивать потребление красного мяса до 350-500 г в приготовленном виде в неделю и минимизировать обработанное мясо.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-semibold primary-accent mb-3">Белое мясо и молочные продукты: Воспаление?</h3>
+                    <p class="text-content mb-4">
+                        Вопрос о влиянии диетического белого мяса и молочных продуктов на воспалительные процессы в организме сложен. Некоторые исследования указывают на возможную связь у чувствительных лиц, особенно при употреблении продуктов низкого качества или в больших количествах.
+                    </p>
+                    <p class="text-content">
+                        Однако для большинства здоровых людей умеренное потребление качественного белого мяса (без кожи, не жареного) и нежирных/обезжиренных молочных продуктов в рамках сбалансированной диеты не вызывает системного воспаления. Важен общий характер питания: диета, богатая овощами, фруктами, цельнозерновыми и омега-3 жирными кислотами, обладает противовоспалительным потенциалом.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vitamins-minerals" class="mb-12">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">Витамины и минералы – сила в еде</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold primary-accent mb-3">Нужны ли дополнительные витамины?</h3>
+                    <p class="text-content mb-4">
+                        Большинство необходимых витаминов и минералов мы можем и должны получать из разнообразной и сбалансированной пищи. Фрукты, овощи, цельнозерновые, белковые продукты и полезные жиры – лучшие источники.
+                    </p>
+                    <p class="text-content">
+                        Дополнительный прием витаминов в виде добавок может быть рекомендован врачом в определенных случаях:
+                    </p>
+                    <ul class="list-disc list-inside text-content space-y-1 mt-2">
+                        <li>При подтвержденном дефиците (например, витамина D, железа)</li>
+                        <li>В определенные периоды жизни (беременность, пожилой возраст)</li>
+                        <li>При некоторых заболеваниях или ограничительных диетах</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-semibold primary-accent mb-3">Ключевые нутриенты и их дефициты</h3>
+                     <p class="text-content mb-4">Некоторые витамины и минералы чаще других бывают в дефиците. Важно следить за их достаточным поступлением.</p>
+                    <div class="chart-container h-72 md:h-80">
+                        <canvas id="vitaminDeficiencyChart"></canvas>
+                    </div>
+                     <p class="text-sm text-gray-600 mt-2 text-center">Данные о распространенности дефицитов могут варьироваться.</p>
+                </div>
+            </div>
+             <div class="card mt-6">
+                <h3 class="text-xl font-semibold primary-accent mb-3">Антиоксиданты: Добавки или пища?</h3>
+                <p class="text-content mb-4">
+                    Антиоксиданты (например, астаксантин, ресвератрол, дигидрокверцетин) борются со свободными радикалами. Лучшие источники – яркие овощи, фрукты, ягоды, орехи, зеленый чай.
+                </p>
+                <p class="text-content">
+                    Большинство исследований показывают, что польза антиоксидантов максимальна при их получении из пищи. Эффективность высоких доз антиоксидантов в виде добавок для профилактики заболеваний у здоровых людей не всегда подтверждена и иногда может быть даже вредной. Перед приемом таких добавок необходима консультация специалиста.
+                </p>
+            </div>
+        </section>
+
+        <section id="supplements" class="mb-12">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">Биологически активные добавки (БАДы) – что действительно нужно?</h2>
+            <div class="card">
+                <h3 class="text-xl font-semibold primary-accent mb-3">Обзор популярных БАДов</h3>
+                <p class="text-content mb-4">Некоторые добавки могут быть полезны при определенных условиях, но не заменяют полноценное питание.</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Добавка</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Потенциальная польза</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Когда может быть нужна?</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-content">
+                            <tr><td class="px-6 py-4 whitespace-nowrap font-medium">Клетчатка (псиллиум)</td><td class="px-6 py-4">Улучшение пищеварения, контроль сахара и холестерина</td><td class="px-6 py-4">При недостаточном потреблении с пищей</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap font-medium">Витамин D</td><td class="px-6 py-4">Здоровье костей, иммунитет</td><td class="px-6 py-4">При дефиците, особенно в северных широтах</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap font-medium">Магний (хелат)</td><td class="px-6 py-4">Работа мышц и нервной системы, снижение усталости</td><td class="px-6 py-4">При дефиците, высоких нагрузках, стрессе</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap font-medium">Омега-3 (рыбий жир)</td><td class="px-6 py-4">Здоровье сердца и мозга, противовоспалительный эффект</td><td class="px-6 py-4">При редком употреблении жирной рыбы</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap font-medium">Мультивитамины</td><td class="px-6 py-4">Общая поддержка при несбалансированном питанием</td><td class="px-6 py-4">Редко, по назначению врача при строгих диетах</td></tr>
+                             <tr><td class="px-6 py-4 whitespace-nowrap font-medium">Биотин</td><td class="px-6 py-4">Здоровье волос и ногтей (ограниченные данные)</td><td class="px-6 py-4">При доказанном дефиците (редко)</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap font-medium">BCAA, Глютамин</td><td class="px-6 py-4">Для большинства людей не нужны при достаточном белке в рационе</td><td class="px-6 py-4">Могут рассматриваться для профессиональных спортсменов</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-6">
+                 <h3 class="text-xl font-semibold primary-accent mb-3">Нутритивная поддержка при реабилитации</h3>
+                 <p class="text-content">В процессе восстановления после травм, операций или болезней особенно важна адекватная нутритивная поддержка. Повышенная потребность в белке (1.5-2.0 г/кг массы тела) для регенерации тканей и калориях часто важнее, чем прием стандартных мультивитаминных комплексов. Целенаправленная коррекция дефицитов конкретных витаминов и минералов (например, цинка, витамина С) под контролем врача может ускорить выздоровление.</p>
+            </div>
+
+            <div class="card mt-6">
+                <h3 class="text-xl font-semibold primary-accent mb-3">Распространенные мифы и заблуждения</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="p-4 border border-red-300 rounded-lg bg-red-50">
+                        <p class="font-semibold text-red-700">🚫 Миф: Все жиры вредны.</p>
+                        <p class="text-sm text-content">✔️ Факт: Ненасыщенные жиры (авокадо, орехи, оливковое масло) необходимы для здоровья.</p>
+                    </div>
+                    <div class="p-4 border border-red-300 rounded-lg bg-red-50">
+                        <p class="font-semibold text-red-700">🚫 Миф: Детокс-диеты очищают организм.</p>
+                        <p class="text-sm text-content">✔️ Факт: Организм имеет собственные системы детоксикации (печень, почки). Специальные диеты не нужны и могут быть вредны.</p>
+                    </div>
+                    <div class="p-4 border border-red-300 rounded-lg bg-red-50">
+                        <p class="font-semibold text-red-700">🚫 Миф: Чтобы похудеть, нужно голодать.</p>
+                        <p class="text-sm text-content">✔️ Факт: Сбалансированное питание с умеренным дефицитом калорий эффективнее и безопаснее.</p>
+                    </div>
+                    <div class="p-4 border border-red-300 rounded-lg bg-red-50">
+                        <p class="font-semibold text-red-700">🚫 Миф: Употребление мяса обязательно вызывает воспаление.</p>
+                        <p class="text-sm text-content">✔️ Факт: Умеренное потребление качественного нежирного мяса в рамках сбалансированной диеты не обязательно ведет к воспалению у здоровых людей. Важен общий паттерн питания.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-6">
+                <h3 class="text-xl font-semibold primary-accent mb-3">✨ Развеять миф о питании</h3>
+                <p class="text-content mb-4">Введите любой миф или утверждение о питании, и я постараюсь его развеять или подтвердить на основе научных данных.</p>
+                <textarea id="mythInput" rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500" placeholder="Например: 'Углеводы вредны для здоровья.'"></textarea>
+                <button id="debunkMythBtn" class="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus->ring-teal-500 focus:ring-offset-2 transition-colors mt-4">
+                    Развеять ✨миф
+                </button>
+                <div id="mythResult" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md text-blue-800 hidden"></div>
+                <div id="mythLoading" class="mt-4 text-center text-gray-600 hidden">Загрузка...</div>
+            </div>
+        </section>
+
+        <section id="dailyRation" class="mb-12">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">Примеры дневного рациона для активных людей</h2>
+            <div class="card">
+                <p class="text-content mb-4">
+                    Здесь я хочу поделиться примерами возможного ежедневного рациона на 7 дней с повышенным уровнем белка для активных людей. Это углеводы и жиры прыгают в продуктовую корзину в магазине как будто без нашего личного участия, тогда как чтобы получить норму белка, эту корзину нужно уже формировать сознательно.
+                </p>
+                <p class="text-content mb-4">
+                    Эти примеры сбалансированных дневных рационов показывают насколько они могут быть разнообразными.
+                </p>
+                <p class="text-content mb-4">
+                    Переключайтесь между днями, чтобы увидеть больше примеров.
+                </p>
+                <div class="flex items-center justify-between mt-6 flex-wrap gap-4">
+                    <button id="prevDayBtn" class="bg-teal-600 text-white p-3 rounded-full shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-colors">
+                        &larr; Предыдущий день
+                    </button>
+                    <h4 id="currentDayTitle" class="text-2xl font-semibold primary-accent text-center flex-grow">День 1</h4>
+                    <button id="nextDayBtn" class="bg-teal-600 text-white p-3 rounded-full shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-colors">
+                        Следующий день &rarr;
+                    </button>
+                </div>
+                <div id="mealPlanContainer" class="mt-6 text-left">
+                    </div>
+            </div>
+        </section>
+
+        <section id="recipeGenerator" class="mb-12">
+            <h2 class="text-3xl font-bold section-title mb-6 text-center">✨ Генератор рецептов</h2>
+            <div class="card">
+                <p class="text-content mb-4">Введите основные ингредиенты или тип блюда, и я сгенерирую для вас уникальный рецепт!</p>
+                <textarea id="recipeInput" rows="6" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500" placeholder="Например: 'курица, брокколи, ужин' или 'вегетарианский обед с чечевицей'"></textarea>
+                <button id="generateRecipeBtn" class="w-full bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus->ring-teal-500 focus:ring-offset-2 transition-colors mt-4">
+                    Сгенерировать ✨рецепт
+                </button>
+                <div id="recipeResult" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md text-blue-800 hidden"></div>
+                <div id="recipeLoading" class="mt-4 text-center text-gray-600 hidden">Загрузка рецепта...</div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="mb-12">
+             <div class="card text-center bg-teal-600 text-white">
+                <h2 class="text-2xl font-semibold mb-4">Заключение: Путь к здоровью через осознанное питание</h2>
+                <p class="leading-relaxed">
+                    Здоровое питание – это гибкая система, которую можно адаптировать под индивидуальные потребности и предпочтения. Главное – это баланс, разнообразие и осознанный подход к выбору продуктов. Не стремитесь к идеалу, а делайте небольшие, но регулярные шаги к улучшению своего рациона. Прислушивайтесь к своему организму, консультируйтесь со специалистами и помните, что еда должна приносить не только пользу, но и удовольствие!
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+        <p>&copy; 2025 Сергей Вячеславович Веснин. Инфографика о Здоровом Питании. Информация представлена в ознакомительных целях.</p>
+        <p class="text-sm">Перед изменением рациона или началом приема БАДов проконсультируйтесь с врачом.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function wrapLabel(label, maxWidth) {
+                if (typeof label !== 'string' || label.length <= maxWidth) return label;
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = words[0];
+                for (let i = 1; i < words.length; i++) {
+                    if ((currentLine + ' ' + words[i]).length > maxWidth && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    } else {
+                        currentLine += (currentLine.length > 0 ? ' ' : '') + words[i];
+                    }
+                }
+                if (currentLine.length > 0) {
+                   lines.push(currentLine);
+                }
+                return lines.length > 0 ? lines : [label];
+            }
+
+            const tooltipTitleCallback = function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+
+            // Chart 1: Protein Norms
+            const proteinNormsCtx = document.getElementById('proteinNormsChart');
+            if (proteinNormsCtx) {
+                new Chart(proteinNormsCtx, {
+                    type: 'bar', // Changed to bar chart
+                    data: {
+                        labels: [
+                            'Дети (1-3 года)',
+                            'Дети (4-8 лет)',
+                            'Подростки (9-13 лет)',
+                            'Подростки (14-18 лет, девочки)',
+                            'Подростки (14-18 лет, мальчики)',
+                            'Взрослые (19-50 лет, женщины, малоактивные)',
+                            'Взрослые (19-50 лет, женщины, активные)',
+                            'Взрослые (19-50 лет, мужчины, малоактивные)',
+                            'Взрослые (19-50 лет, мужчины, активные)',
+                            'Пожилые (51+ лет, малоактивные)',
+                            'Пожилые (51+ лет, активные)',
+                            'Беременные/Кормящие женщины',
+                            'Спортсмены (набор массы)',
+                            'Спортсмены (выносливость)'
+                        ].map(label => wrapLabel(label, 25)), // Wrap labels for readability
+                        datasets: [{
+                            label: 'Средняя норма белка (г/кг массы тела)',
+                            data: [1.1, 0.95, 0.9, 0.85, 0.9, 0.8, 1.2, 0.8, 1.4, 1.0, 1.3, 1.1, 1.8, 1.5], // Illustrative g/kg values
+                            backgroundColor: [
+                                '#FFC107', '#FFD54F', '#FFB300', '#FFA000', '#FF8F00', // Yellow/Orange shades
+                                '#2196F3', '#1976D2', '#0D47A1', '#42A5F5', // Blue shades
+                                '#4CAF50', '#66BB6A', '#388E3C', // Green shades
+                                '#E91E63', '#D81B60' // Pink/Red shades
+                            ],
+                            borderColor: 'rgba(0,0,0,0.1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // Horizontal bars
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Грамм белка на килограмм массы тела (г/кг)'
+                                },
+                                ticks: {
+                                    callback: function(value) { return value + " г/кг" }
+                                }
+                            },
+                            y: {
+                                ticks: { autoSkip: false }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback,
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.x !== null) {
+                                            label += context.parsed.x + ' г/кг';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Chart 2: Vitamin Deficiencies
+            const vitaminDeficiencyCtx = document.getElementById('vitaminDeficiencyChart');
+            if (vitaminDeficiencyCtx) {
+                new Chart(vitaminDeficiencyCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            wrapLabel('Витамин D (особенно в северных широтах)', 20),
+                            wrapLabel('Железо (особенно женщины, дети, вегетарианцы)', 20),
+                            wrapLabel('Йод (в регионах с дефицитом в почве)', 20),
+                            wrapLabel('Магний (при стрессах, несбалансированном питании)', 20),
+                            wrapLabel('Витамин B12 (строгие веганы, пожилые)', 20)
+                        ],
+                        datasets: [{
+                            label: 'Ориентировочная распространенность дефицита/недостатка (%)',
+                            data: [70, 30, 25, 40, 15], // Example data
+                            backgroundColor: ['#FF9800', '#F44336', '#9C27B0', '#03A9F4', '#8BC34A'],
+                            borderColor: 'rgba(0,0,0,0.1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { suggestedMax: 100, ticks: { callback: function(value) { return value + "%" } } },
+                            y: { ticks: { autoSkip: false } }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { callbacks: { title: tooltipTitleCallback } }
+                        }
+                    }
+                });
+            }
+
+            // Gemini API Integration for Protein Recommendation
+            const getProteinRecBtn = document.getElementById('getProteinRecBtn');
+            const weightInput = document.getElementById('weightInput');
+            const activityLevel = document.getElementById('activityLevel');
+            const proteinRecResult = document.getElementById('proteinRecResult');
+            const proteinRecLoading = document.getElementById('proteinRecLoading');
+
+            getProteinRecBtn.addEventListener('click', async () => {
+                const weight = parseFloat(weightInput.value);
+                const activity = activityLevel.value;
+
+                if (isNaN(weight) || weight <= 0 || !activity) {
+                    proteinRecResult.textContent = 'Пожалуйста, введите корректный вес и выберите уровень активности.';
+                    proteinRecResult.classList.remove('hidden');
+                    proteinRecResult.classList.remove('bg-blue-50', 'text-blue-800');
+                    proteinRecResult.classList.add('bg-red-50', 'text-red-800');
+                    return;
+                }
+
+                proteinRecResult.classList.add('hidden');
+                proteinRecLoading.classList.remove('hidden');
+                proteinRecResult.classList.remove('bg-red-50', 'text-red-800');
+                proteinRecResult.classList.add('bg-blue-50', 'text-blue-800');
+
+                const prompt = `Пользователь весит ${weight} кг и имеет ${activity} уровень активности. Используя общие научные рекомендации по потреблению белка (например, 0.8-1.0 г/кг для малоподвижных, 1.2-1.6 г/кг для активных, до 2.0 г/кг для очень активных или при реабилитации), рассчитай и дай рекомендацию по суточной норме белка в граммах. Объясни, почему именно такая рекомендация, и приведи примеры источников белка. Ответь на русском языке.`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                // ВСТАВЛЕННЫЙ API КЛЮЧ
+                const apiKey = "AIzaSyDnKv3659AFhRYjHbZ2cvppPsxsPLsBT-o";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        proteinRecResult.innerHTML = text;
+                        proteinRecResult.classList.remove('hidden');
+                    } else {
+                        proteinRecResult.textContent = 'Не удалось получить рекомендацию. Попробуйте снова.';
+                        proteinRecResult.classList.remove('hidden');
+                        proteinRecResult.classList.remove('bg-blue-50', 'text-blue-800');
+                        proteinRecResult.classList.add('bg-red-50', 'text-red-800');
+                    }
+                } catch (error) {
+                    console.error('Error fetching protein recommendation:', error);
+                    proteinRecResult.textContent = 'Произошла ошибка при получении рекомендации. Пожалуйста, проверьте подключение к интернету.';
+                    proteinRecResult.classList.remove('hidden');
+                    proteinRecResult.classList.remove('bg-blue-50', 'text-blue-800');
+                    proteinRecResult.classList.add('bg-red-50', 'text-red-800');
+                } finally {
+                    proteinRecLoading.classList.add('hidden');
+                }
+            });
+
+            // Gemini API Integration for Myth Buster
+            const debunkMythBtn = document.getElementById('debunkMythBtn');
+            const mythInput = document.getElementById('mythInput');
+            const mythResult = document.getElementById('mythResult');
+            const mythLoading = document.getElementById('mythLoading');
+
+            debunkMythBtn.addEventListener('click', async () => {
+                const mythText = mythInput.value.trim();
+
+                if (!mythText) {
+                    mythResult.textContent = 'Пожалуйста, введите миф или утверждение для проверки.';
+                    mythResult.classList.remove('hidden');
+                    mythResult.classList.remove('bg-blue-50', 'text-blue-800');
+                    mythResult.classList.add('bg-red-50', 'text-red-800');
+                    return;
+                }
+
+                mythResult.classList.add('hidden');
+                mythLoading.classList.remove('hidden');
+                mythResult.classList.remove('bg-red-50', 'text-red-800');
+                mythResult.classList.add('bg-blue-50', 'text-blue-800');
+
+                const prompt = `Развей или подтверди следующее утверждение о питании, основываясь на современных научных данных: "${mythText}". Объясни кратко и понятно. Ответь на русском языке.`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                // ВСТАВЛЕННЫЙ API КЛЮЧ
+                const apiKey = "AIzaSyDnKv3659AFhRYjHbZ2cvppPsxsPLsBT-o";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        mythResult.innerHTML = text;
+                        mythResult.classList.remove('hidden');
+                    } else {
+                        mythResult.textContent = 'Не удалось развеять миф. Попробуйте снова.';
+                        mythResult.classList.remove('hidden');
+                        mythResult.classList.remove('bg-blue-50', 'text-blue-800');
+                        mythResult.classList.add('bg-red-50', 'text-red-800');
+                    }
+                } catch (error) {
+                    console.error('Error fetching myth debunk:', error);
+                    mythResult.textContent = 'Произошла ошибка при обработке мифа. Пожалуйста, проверьте подключение к интернету.';
+                    mythResult.classList.remove('hidden');
+                    mythResult.classList.remove('bg-blue-50', 'text-blue-800');
+                    mythResult.classList.add('bg-red-50', 'text-red-800');
+                } finally {
+                    mythLoading.classList.add('hidden');
+                }
+            });
+
+            // Daily Ration Section Logic
+            const mealPlans = [
+                {
+                    day: "День 1",
+                    description: "Начните неделю с мощного заряда энергии и белка для восстановления мышц.",
+                    meals: [
+                        {
+                            name: "Завтрак",
+                            items: ["Овсянка на молоке с ягодами и миндалем (300г готовой)", "3 яичных белка и 1 целое яйцо (омлет)", "Стакан ацидобифилина (500г)"],
+                            calories: "~650 ккал",
+                            protein: "~40 г",
+                            vitamins: "Витамин C, B-группа, E, Кальций, Магний, Пробиотики"
+                        },
+                        {
+                            name: "Обед",
+                            items: ["Куриное филе, запеченное в духовке (150г)", "Бурый рис (~180г готового)", "Большой салат из свежих овощей с оливковым маслом (200г)"],
+                            calories: "~680 ккал",
+                            protein: "~42 г",
+                            vitamins: "Витамин A, K, C, B-группа, Железо, Цинк"
+                        },
+                        {
+                            name: "Полдник",
+                            items: ["Фрукт на выбор", "Греческий йогурт (150г) с горстью орехов (20г)"],
+                            calories: "~280 ккал",
+                            protein: "~18 г",
+                            vitamins: "Кальций, Пробиотики, Клетчатка"
+                        },
+                        {
+                            name: "Ужин",
+                            items: ["Запеченный лосось (150г)", "Киноа (~150г готовой)", "Брокколи на пару (150г)"],
+                            calories: "~630 ккал",
+                            protein: "~38 г",
+                            vitamins: "Омега-3, Витамин D, B12, Калий"
+                        },
+                        {
+                            name: "Перед сном (опционально)",
+                            items: ["Порция казеинового протеина (30г) на молоке (можно использовать растительное молоко)"],
+                            calories: "~180 ккал",
+                            protein: "~25 г",
+                            vitamins: "Аминокислоты"
+                        }
+                    ],
+                    total: {
+                        calories: "~2420-2520 ккал",
+                        protein: "~163 г"
+                    }
+                },
+                {
+                    day: "День 2",
+                    description: "Разнообразьте рацион, сохраняя высокий уровень белка и полезных углеводов.",
+                    meals: [
+                        {
+                            name: "Завтрак",
+                            items: ["Творог (200г) с медом и фруктом на выбор", "Цельнозерновой тост с авокадо", "Стакан кефира (200мл)"],
+                            calories: "~580 ккал",
+                            protein: "~33 г",
+                            vitamins: "Кальций, Калий, Витамин B6, Здоровые жиры, Пробиотики"
+                        },
+                        {
+                            name: "Обед",
+                            items: ["Суп-пюре из чечевицы с курицей (300г)", "Салат из свежих овощей с семенами (150г)"],
+                            calories: "~680 ккал",
+                            protein: "~42 г",
+                            vitamins: "Железо, Клетчатка, Фолиевая кислота"
+                        },
+                        {
+                            name: "Полдник",
+                            items: ["Порция соевого протеина (30г) на молоке (можно использовать растительное молоко)", "Фруктовый салат (150г)"],
+                            calories: "~300 ккал",
+                            protein: "~28 г",
+                            vitamins: "Витамин C, E, Магний"
+                        },
+                        {
+                            name: "Ужин",
+                            items: ["Запеченная индейка (150г)", "Гречка (~180г готовой)", "Тушеные овощи (морковь, брокколи, перец) (200г)"],
+                            calories: "~700 ккал",
+                            protein: "~43 г",
+                            vitamins: "Витамин A, C, B-группа, Селен"
+                        }
+                    ],
+                    total: {
+                        calories: "~2260-2360 ккал",
+                        protein: "~146 г"
+                    }
+                },
+                {
+                    day: "День 3",
+                    description: "День с фокусом на рыбе и разнообразных растительных источниках белка.",
+                    meals: [
+                        {
+                            name: "Завтрак",
+                            items: ["Яичница из 3 яиц с шпинатом и помидорами", "Кусочек цельнозернового хлеба", "Стакан ацидобифилина (500г)"],
+                            calories: "~680 ккал",
+                            protein: "~35 г",
+                            vitamins: "Витамин K, A, B12, Железо, Пробиотики"
+                        },
+                        {
+                            name: "Обед",
+                            items: ["Рыбный стейк (треска/хек 180г), запеченный в духовке", "Картофель отварной (200г)", "Салат из огурцов и зелени"],
+                            calories: "~650 ккал",
+                            protein: "~38 г",
+                            vitamins: "Витамин D, B-группа, Калий"
+                        },
+                        {
+                            name: "Полдник",
+                            items: ["Смузи: фрукт на выбор, шпинат, соевый протеин (20г), молоко (200мл, можно растительное)"],
+                            calories: "~300 ккал",
+                            protein: "~25 г",
+                            vitamins: "Витамин C, K, Магний"
+                        },
+                        {
+                            name: "Ужин",
+                            items: ["Тофу, запеченное в духовке (150г)", "Киноа (~150г готовой)", "Овощи, запеченные в духовке (цукини, перец, баклажан)"],
+                            calories: "~660 ккал",
+                            protein: "~33 г",
+                            vitamins: "Кальций, Железо, Витамин C"
+                        }
+                    ],
+                    total: {
+                        calories: "~2290-2390 ккал",
+                        protein: "~131 г"
+                    }
+                },
+                {
+                    day: "День 4",
+                    description: "Оптимальное сочетание белков и сложных углеводов для поддержания энергии.",
+                    meals: [
+                        {
+                            name: "Завтрак",
+                            items: ["Овсянка на воде с семенами чиа и фруктом на выбор (300г готовой)", "Стакан ацидобифилина (500г)"],
+                            calories: "~620 ккал",
+                            protein: "~25 г",
+                            vitamins: "Клетчатка, Омега-3, Пробиотики, Кальций"
+                        },
+                        {
+                            name: "Обед",
+                            items: ["Индейка, запеченная в духовке (150г)", "Гречка (~180г готовой)", "Большой овощной салат с зеленью"],
+                            calories: "~750 ккал",
+                            protein: "~45 г",
+                            vitamins: "Железо, B12, Цинк, Витамин K"
+                        },
+                        {
+                            name: "Полдник",
+                            items: ["Большой фруктовый салат (200г) с горстью орехов", "Порция казеинового протеина (20г) на молоке (можно использовать растительное молоко)"],
+                            calories: "~400 ккал",
+                            protein: "~28 г",
+                            vitamins: "Клетчатка, Витамин C, E"
+                        },
+                        {
+                            name: "Ужин",
+                            items: ["Куриные котлеты, запеченные в духовке (150г)", "Овощное рагу (картофель, морковь, горох) (250г)"],
+                            calories: "~680 ккал",
+                            protein: "~38 г",
+                            vitamins: "Витамин A, C, B-группа"
+                        }
+                    ],
+                    total: {
+                        calories: "~2450-2550 ккал",
+                        protein: "~136 г"
+                    }
+                },
+                {
+                    day: "День 5",
+                    description: "Легкий, но насыщенный белком и витаминами рацион.",
+                    meals: [
+                        {
+                            name: "Завтрак",
+                            items: ["Творожная запеканка (200г) с изюмом", "Стакан кефира (200мл)"],
+                            calories: "~450 ккал",
+                            protein: "~30 г",
+                            vitamins: "Кальций, B-группа, Пробиотики"
+                        },
+                        {
+                            name: "Обед",
+                            items: ["Рыбный суп (лосось, овощи) (350г)", "Кусочек цельнозернового хлеба", "Овощной салат"],
+                            calories: "~650 ккал",
+                            protein: "~38 г",
+                            vitamins: "Омега-3, Витамин D, B12, Витамин C"
+                        },
+                        {
+                            name: "Полдник",
+                            items: ["Горсть грецких орехов (30г)", "Фрукт на выбор", "Стакан ацидобифилина (500г)"],
+                            calories: "~480 ккал",
+                            protein: "~15 г",
+                            vitamins: "Омега-3, Калий, Клетчатка, Пробиотики"
+                        },
+                        {
+                            name: "Ужин",
+                            items: ["Куриная грудка, запеченная с овощами (перец, цукини) (200г)", "Салат из свежей капусты"],
+                            calories: "~650 ккал",
+                            protein: "~40 г",
+                            vitamins: "Витамин C, K, B-группа"
+                        }
+                    ],
+                    total: {
+                        calories: "~2230-2330 ккал",
+                        protein: "~123 г"
+                    }
+                },
+                {
+                    day: "День 6",
+                    description: "Фокус на растительном белке и разнообразии круп.",
+                    meals: [
+                        {
+                            name: "Завтрак",
+                            items: ["Омлет из 3 яиц с грибами и сыром", "Овощной салат", "Стакан ацидобифилина (500г)"],
+                            calories: "~680 ккал",
+                            protein: "~33 г",
+                            vitamins: "Витамин D, B12, K, Пробиотики"
+                        },
+                        {
+                            name: "Обед",
+                            items: ["Плов с индейкой (300г готового)", "Салат из помидоров и огурцов"],
+                            calories: "~700 ккал",
+                            protein: "~40 г",
+                            vitamins: "Витамин A, B-группа"
+                        },
+                        {
+                            name: "Полдник",
+                            items: ["Порция соевого протеина (30г) на молоке (можно использовать растительное молоко)", "Фрукт на выбор"],
+                            calories: "~180 ккал",
+                            protein: "~25 г",
+                            vitamins: "Витамин C"
+                        },
+                        {
+                            name: "Ужин",
+                            items: ["Паста из цельнозерновой муки (200г готовой) с соусом песто и креветками"],
+                            calories: "~650 ккал",
+                            protein: "~30 г",
+                            vitamins: "Магний, B-группа, Омега-3"
+                        }
+                    ],
+                    total: {
+                        calories: "~2210-2310 ккал",
+                        protein: "~128 г"
+                    }
+                },
+                {
+                    day: "День 7",
+                    description: "Завершите неделю сбалансированным и вкусным рационом.",
+                    meals: [
+                        {
+                            name: "Завтрак",
+                            items: ["Сырники (200г) со сметаной", "Ягоды (100г)", "Стакан кефира (200мл)"],
+                            calories: "~580 ккал",
+                            protein: "~30 г",
+                            vitamins: "Кальций, Витамин C, Пробиотики"
+                        },
+                        {
+                            name: "Обед",
+                            items: ["Борщ с курицей (350г)", "Кусочек ржаного хлеба", "Овощной салат"],
+                            calories: "~700 ккал",
+                            protein: "~35 г",
+                            vitamins: "Витамин C, B-группа, Железо"
+                        },
+                        {
+                            name: "Полдник",
+                            items: ["Йогурт питьевой (200мл)", "Горсть кешью (20г)", "Фрукт на выбор"],
+                            calories: "~350 ккал",
+                            protein: "~15 г",
+                            vitamins: "Кальций, Магний, Клетчатка"
+                        },
+                        {
+                            name: "Ужин",
+                            items: ["Куриный салат (курица, овощи, зелень) (250г)", "Запеченный батат (150г готового)"],
+                            calories: "~600 ккал",
+                            protein: "~35 г",
+                            vitamins: "Витамин A, C, B6"
+                        }
+                    ],
+                    total: {
+                        calories: "~2230-2330 ккал",
+                        protein: "~115 г"
+                    }
+                }
+            ];
+
+            let currentDayIndex = 0;
+            const currentDayTitle = document.getElementById('currentDayTitle');
+            const mealPlanContainer = document.getElementById('mealPlanContainer');
+            const prevDayBtn = document.getElementById('prevDayBtn');
+            const nextDayBtn = document.getElementById('nextDayBtn');
+
+            function renderMealPlan(index) {
+                const dayPlan = mealPlans[index];
+                currentDayTitle.textContent = dayPlan.day;
+                let htmlContent = `
+                    <p class="text-content mb-4"><strong>${dayPlan.description}</strong></p>
+                    <div class="space-y-4">
+                `;
+
+                dayPlan.meals.forEach(meal => {
+                    htmlContent += `
+                        <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                            <h5 class="font-semibold secondary-accent text-lg mb-2">${meal.name}</h5>
+                            <ul class="list-disc list-inside text-content text-sm space-y-1">
+                                ${meal.items.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                            <p class="text-xs text-gray-600 mt-2">
+                                Калории: <strong>${meal.calories}</strong> | Белок: <strong>${meal.protein}</strong> | Витамины: ${meal.vitamins}
+                            </p>
+                        </div>
+                    `;
+                });
+
+                htmlContent += `
+                    </div>
+                    <div class="mt-6 p-4 bg-teal-50 border border-teal-200 rounded-md text-teal-800 font-semibold">
+                        <p>Общая суточная калорийность: ${dayPlan.total.calories}</p>
+                        <p>Общее количество белка: ${dayPlan.total.protein}</p>
+                    </div>
+                `;
+                mealPlanContainer.innerHTML = htmlContent;
+            }
+
+            prevDayBtn.addEventListener('click', () => {
+                currentDayIndex = (currentDayIndex - 1 + mealPlans.length) % mealPlans.length;
+                renderMealPlan(currentDayIndex);
+            });
+
+            nextDayBtn.addEventListener('click', () => {
+                currentDayIndex = (currentDayIndex + 1) % mealPlans.length;
+                renderMealPlan(currentDayIndex);
+            });
+
+            // Initial render
+            renderMealPlan(currentDayIndex);
+
+            // Function to convert basic Markdown to HTML
+            function convertMarkdownToHtml(markdownText) {
+                let html = markdownText;
+
+                // Convert bold: **text** to <strong>text</strong>
+                html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                // Convert italic: *text* to <em>text</em> (ensure it doesn't conflict with list markers)
+                // This regex avoids matching '*' at the beginning of a line followed by a space
+                html = html.replace(/(?<!\n)\*(?!\s)(.*?)(?<!\s)\*/g, '<em>$1</em>');
+
+                // Convert headings (simple #, ##, ###)
+                html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+                html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+                html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+                // Handle lists
+                let lines = html.split('\n');
+                let processedLines = [];
+                let inUnorderedList = false;
+                let inOrderedList = false;
+
+                lines.forEach(line => {
+                    const trimmedLine = line.trim();
+                    if (trimmedLine.match(/^(\*|\-)\s/)) { // Unordered list item
+                        if (!inUnorderedList) {
+                            processedLines.push('<ul>');
+                            inUnorderedList = true;
+                        }
+                        if (inOrderedList) { // Close ordered list if transitioning
+                            processedLines.push('</ol>');
+                            inOrderedList = false;
+                        }
+                        processedLines.push(`<li>${trimmedLine.substring(trimmedLine.indexOf(' ') + 1)}</li>`);
+                    } else if (trimmedLine.match(/^\d+\.\s/)) { // Ordered list item
+                        if (!inOrderedList) {
+                            processedLines.push('<ol>');
+                            inOrderedList = true;
+                        }
+                        if (inUnorderedList) { // Close unordered list if transitioning
+                            processedLines.push('</ul>');
+                            inUnorderedList = false;
+                        }
+                        processedLines.push(`<li>${trimmedLine.substring(trimmedLine.indexOf('.') + 1).trim()}</li>`);
+                    } else {
+                        if (inUnorderedList) {
+                            processedLines.push('</ul>');
+                            inUnorderedList = false;
+                        }
+                        if (inOrderedList) {
+                            processedLines.push('</ol>');
+                            inOrderedList = false;
+                        }
+                        // For regular paragraphs, just add the line. Newlines will be handled later.
+                        processedLines.push(line);
+                    }
+                });
+
+                // Close any open lists at the end
+                if (inUnorderedList) {
+                    processedLines.push('</ul>');
+                }
+                if (inOrderedList) {
+                    processedLines.push('</ol>');
+                }
+
+                // Join lines and replace remaining newlines with <br> for non-list content
+                html = processedLines.join('\n');
+                // Replace consecutive newlines with single <br> for paragraphs and double <br> for block separation
+                html = html.replace(/\n\s*\n/g, '<br><br>'); // Two newlines for paragraph break
+                html = html.replace(/\n/g, '<br>'); // Single newline for line break
+
+                return html;
+            }
+
+            // Gemini API Integration for Recipe Generator
+            const generateRecipeBtn = document.getElementById('generateRecipeBtn');
+            const recipeInput = document.getElementById('recipeInput');
+            const recipeResult = document.getElementById('recipeResult');
+            const recipeLoading = document.getElementById('recipeLoading');
+
+            generateRecipeBtn.addEventListener('click', async () => {
+                const recipeText = recipeInput.value.trim();
+
+                if (!recipeText) {
+                    recipeResult.textContent = 'Пожалуйста, введите ингредиенты или тип блюда для генерации рецепта.';
+                    recipeResult.classList.remove('hidden');
+                    recipeResult.classList.remove('bg-blue-50', 'text-blue-800');
+                    recipeResult.classList.add('bg-red-50', 'text-red-800');
+                    return;
+                }
+
+                recipeResult.classList.add('hidden');
+                recipeLoading.classList.remove('hidden');
+                recipeResult.classList.remove('bg-red-50', 'text-red-800');
+                recipeResult.classList.add('bg-blue-50', 'text-blue-800');
+
+                const prompt = `Создай подробный рецепт блюда, используя следующие ключевые слова: "${recipeText}". Включи список ингредиентов с количествами и пошаговые инструкции. Ответь на русском языке.`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                // ВСТАВЛЕННЫЙ API КЛЮЧ
+                const apiKey = "AIzaSyDnKv3659AFhRYjHbZ2cvppPsxsPLsBT-o";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        recipeResult.innerHTML = convertMarkdownToHtml(text); // Use the new function here
+                        recipeResult.classList.remove('hidden');
+                    } else {
+                        recipeResult.textContent = 'Не удалось сгенерировать рецепт. Попробуйте снова.';
+                        recipeResult.classList.remove('hidden');
+                        recipeResult.classList.remove('bg-blue-50', 'text-blue-800');
+                        recipeResult.classList.add('bg-red-50', 'text-red-800');
+                    }
+                } catch (error) {
+                    console.error('Error fetching recipe:', error);
+                    recipeResult.textContent = 'Произошла ошибка при генерации рецепта. Пожалуйста, проверьте подключение к интернету.';
+                    recipeResult.classList.remove('hidden');
+                    recipeResult.classList.remove('bg-blue-50', 'text-blue-800');
+                    recipeResult.classList.add('bg-red-50', 'text-red-800');
+                } finally {
+                    recipeLoading.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
